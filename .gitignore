@@ -1,0 +1,7 @@
+# Planilhas com dados reais de funcionarios - nunca versionar
+*.xlsx
+*.xls
+*.csv
+
+# Logs e relatorios gerados pelos scripts (contem dados de funcionarios)
+Logs/
