@@ -4,6 +4,14 @@ Automação em PowerShell para bloqueio de acesso no Active Directory a partir d
 
 Não depende de módulos externos (ImportExcel, Excel instalado) — lê o `.xlsx` diretamente como pacote OOXML. Só precisa do módulo `ActiveDirectory` do PowerShell, já disponível em qualquer servidor com a role AD DS ou RSAT-AD-PowerShell.
 
+## Impacto
+
+Em produção no servidor Active Directory da TEJOFRAN, operado pelo time de TI a cada ciclo de desligamento/férias reportado pelo RH.
+
+- **Tempo**: o bloqueio manual (buscar a conta no AD, desabilitar, ajustar a descrição) levava cerca de **15 minutos por funcionário**. Com o volume atual de **20 a 30 funcionários/mês**, isso representava de **5 a 7,5 horas de trabalho manual repetitivo por mês** — hoje é uma única execução em lote, na casa de minutos, independente do volume.
+- **Volume**: processa em lote os **20 a 30 desligamentos/férias por mês** direto da planilha que o RH já envia, sem digitação manual conta por conta.
+- **Risco**: elimina o bloqueio manual conta-por-conta — reduz a chance de esquecer um desligamento, bloquear a pessoa errada (nomes parecidos) ou deixar de reativar alguém que voltou de férias na data certa. Matrículas não encontradas ou ambíguas nunca são bloqueadas automaticamente, ficam sinalizadas para conferência.
+
 ## Requisitos
 
 - Windows Server com o módulo PowerShell `ActiveDirectory` (RSAT-AD-PowerShell)
